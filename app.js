@@ -17,42 +17,68 @@ const fruitSchema = new mongoose.Schema ({
 const Fruit = mongoose.model("Fruit", fruitSchema);
 
 const fruit = new Fruit ({
-    // name :"Apple",
+     name :"Apple",
     rating: 6,
     review: "peach peachy "
 });
+
+const kiwi = new Fruit({
+    name: "kiwi",
+    rating : 4 ,
+    review : "the best fruit!"
+});
+
 
 //   fruit.save();
 
 const personSchema = new mongoose.Schema ({
     name: String,
     age: Number ,
-    petsName : String
+    petsName : String,
+    favFruit : fruitSchema
 });
 
 const Person = mongoose.model("Person", personSchema);
 
+// const mango = new Fruit ({
+//     name :"mango",
+//    rating: 6,
+//    review: "mango fruity fresh and juicy"
+// });
+
+// mango.save();
+
 const person = new Person ({
-    name: "jhon",
-    age : 55,
-    petsName: "jumbo"
+    name: "sailesh",
+    age : 26,
+    petsName: "jumbo",
+    favFruit : kiwi 
 });
 
 //  person.save();
 
 
+const orange = new Fruit({
+    name: "orange",
+    rating : 5 ,
+    review : "type better way "
+});
 
-// const kiwi = new Fruit({
-//     name: "kiwi",
-//     rating : 4 ,
-//     review : "the best fruit!"
-// });
 
-// const orange = new Fruit({
-//     name: "orange",
-//     rating : 5 ,
-//     review : "type better way "
-// });
+Person.updateOne({name: "polash" }, {favFruit : orange},(err) => {
+        if(err) {
+            console.log(err);
+    
+        } else {
+            console.log("succesfully updated to Jhon favFruit ");
+        }
+    } );
+
+
+
+
+
+
 
 // const banana = new Fruit({
 //     name: "banana",
@@ -72,18 +98,18 @@ const person = new Person ({
 
 // this is to find all the data from fruit database
 
-Fruit.find(function(err, fruits) {
-if (err) {
-    console.log(err);
-} else {
-    mongoose.connection.close();
-    console.log(fruits);
+// Fruit.find(function(err, fruits) {
+// if (err) {
+//     console.log(err);
+// } else {
+//     mongoose.connection.close();
+//     console.log(fruits);
     
-    fruits.forEach(function(fruit){
-        console.log(fruit.name);
-    });
-}
-});
+//     fruits.forEach(function(fruit){
+//         console.log(fruit.name);
+//     });
+// }
+// });
 
 
 // Fruit.updateOne({_id: "5ec2d3cf0c491f04a68f06ed" }, {name: "Peach"},(err) => {
@@ -106,11 +132,11 @@ if (err) {
 // } );    
 
 
-Person.deleteMany({name: "jhon"}, (err) => {
-        if(err) {
-            console.log(err);
+// Person.deleteMany({name: "jhon"}, (err) => {
+//         if(err) {
+//             console.log(err);
     
-        } else {
-            console.log("succesfully deleted all jhon from people");
-        }
-    });
+//         } else {
+//             console.log("succesfully deleted all jhon from people");
+//         }
+//     });
