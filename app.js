@@ -96,12 +96,21 @@ if (err) {
 //     } );
 
 
-Fruit.deleteOne({_id: "5ec2d3cf0c491f04a68f06ed" } , (err) => {
-    if(err) {
-        console.log(err);
+// Fruit.deleteOne({_id: "5ec2d3cf0c491f04a68f06ed" } , (err) => {
+//     if(err) {
+//         console.log(err);
 
-    } else {
-        console.log("succesfully deleted from the fruits to fruitDB");
-    }
-} );    
+//     } else {
+//         console.log("succesfully deleted from the fruits to fruitDB");
+//     }
+// } );    
 
+
+Person.deleteMany({name: "jhon"}, (err) => {
+        if(err) {
+            console.log(err);
+    
+        } else {
+            console.log("succesfully deleted all jhon from people");
+        }
+    });
