@@ -54,11 +54,30 @@ const banana = new Fruit({
 });
 
 
-Fruit.insertMany([kiwi, orange ,banana], (err) => {
-    if(err) {
-        console.log(err);
+// Fruit.insertMany([kiwi, orange ,banana], (err) => {
+//     if(err) {
+//         console.log(err);
 
-    } else {
-        console.log("succesgully saved all the fruits to fruitDB");
-    }
-} );
+//     } else {
+//         console.log("succesgully saved all the fruits to fruitDB");
+//     }
+// } );
+
+// this is to find all the data from fruit database
+
+Fruit.find(function(err, fruits) {
+if (err) {
+    console.log(err);
+} else {
+    mongoose.connection.close();
+    console.log(fruits);
+    
+    fruits.forEach(function(fruit){
+        console.log(fruit.name);
+    });
+}
+});
+
+
+
+
