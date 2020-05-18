@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost:27018/fruitsDB", { useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb://localhost:27017/fruitsDB", { useNewUrlParser: true, useUnifiedTopology: true});
 
 const fruitSchema = new mongoose.Schema ({
     name: String,
@@ -15,7 +15,7 @@ const fruit = new Fruit ({
     review: "awesome apple"
 });
 
-// fruit.save();
+//  fruit.save();
 
 const personSchema = new mongoose.Schema ({
     name: String,
@@ -31,4 +31,34 @@ const person = new Person ({
     petsName: "jumbo"
 });
 
-person.save();
+//  person.save();
+
+
+
+const kiwi = new Fruit({
+    name: "kiwi",
+    rating : 4 ,
+    review : "the best fruit!"
+});
+
+const orange = new Fruit({
+    name: "orange",
+    rating : 5 ,
+    review : "type better way "
+});
+
+const banana = new Fruit({
+    name: "banana",
+    rating : 6 ,
+    review : "simple can eat without teeth"
+});
+
+
+Fruit.insertMany([kiwi, orange ,banana], (err) => {
+    if(err) {
+        console.log(err);
+
+    } else {
+        console.log("succesgully saved all the fruits to fruitDB");
+    }
+} );
