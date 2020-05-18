@@ -23,7 +23,7 @@ const personSchema = new mongoose.Schema ({
     petsName : String
 });
 
-const Person = mongoose.model("Person", PersonSchema);
+const Person = mongoose.model("Person", personSchema);
 
 const person = new Person ({
     name: "jhon",
