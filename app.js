@@ -1,5 +1,11 @@
+// Creating connection here
+
+
 const mongoose = require('mongoose');
 mongoose.connect("mongodb://localhost:27017/fruitsDB", { useNewUrlParser: true, useUnifiedTopology: true});
+
+
+// Making SCHEMA 
 
 const fruitSchema = new mongoose.Schema ({
     name: {
@@ -14,7 +20,12 @@ const fruitSchema = new mongoose.Schema ({
     review: String
 });
 
+// Making Schema to model
+
 const Fruit = mongoose.model("Fruit", fruitSchema);
+
+
+// Giving First Entry
 
 const fruit = new Fruit ({
      name :"Apple",
@@ -29,7 +40,11 @@ const kiwi = new Fruit({
 });
 
 
+// this is to save the entry 
+
 //   fruit.save();
+
+//  this is to modify schema to add relation 
 
 const personSchema = new mongoose.Schema ({
     name: String,
@@ -64,6 +79,7 @@ const orange = new Fruit({
     review : "type better way "
 });
 
+//  using update one to add or change polash favFruit entry
 
 Person.updateOne({name: "polash" }, {favFruit : orange},(err) => {
         if(err) {
@@ -75,17 +91,29 @@ Person.updateOne({name: "polash" }, {favFruit : orange},(err) => {
     } );
 
 
+// this is to give multiple entry now
 
 
+// const kiwi = new Fruit({
+//     name: "kiwi",
+//     rating : 4 ,
+//     review : "the best fruit!"
+// });
 
 
-
+// const orange = new Fruit({
+//     name: "orange",
+//     rating : 6 ,
+//     review : "orange orange"
+// });
+    
 // const banana = new Fruit({
 //     name: "banana",
 //     rating : 6 ,
 //     review : "simple can eat without teeth"
 // });
 
+// using insertMany to add muliptle entry at once 
 
 // Fruit.insertMany([kiwi, orange ,banana], (err) => {
 //     if(err) {
@@ -111,6 +139,7 @@ Person.updateOne({name: "polash" }, {favFruit : orange},(err) => {
 // }
 // });
 
+// this for update list using id
 
 // Fruit.updateOne({_id: "5ec2d3cf0c491f04a68f06ed" }, {name: "Peach"},(err) => {
 //         if(err) {
@@ -120,6 +149,10 @@ Person.updateOne({name: "polash" }, {favFruit : orange},(err) => {
 //             console.log("succesfully updated to the fruits to fruitDB");
 //         }
 //     } );
+
+
+// this for DELETE using id 
+// can also use name or any other parameter
 
 
 // Fruit.deleteOne({_id: "5ec2d3cf0c491f04a68f06ed" } , (err) => {
@@ -132,6 +165,9 @@ Person.updateOne({name: "polash" }, {favFruit : orange},(err) => {
 // } );    
 
 
+// this is for DELETE many with same name or different parameter can give using array
+
+
 // Person.deleteMany({name: "jhon"}, (err) => {
 //         if(err) {
 //             console.log(err);
@@ -140,3 +176,6 @@ Person.updateOne({name: "polash" }, {favFruit : orange},(err) => {
 //             console.log("succesfully deleted all jhon from people");
 //         }
 //     });
+
+
+// THIS IS ENDs
